@@ -3,7 +3,7 @@ from torch.utils.data import Dataset
 
 class TextClassificationDataSet(Dataset):
     """
-    
+    Load dataset with List[Dict{"text": text, "label", label}]
     """
     def __init__(self, data, tokenizer, max_length=512):
         self.data = data
@@ -20,8 +20,9 @@ class TextClassificationDataSet(Dataset):
         inputs = self.tokenizer(text, padding=True, truncation=True, max_length=self.max_length, return_tensors='pt')
         
         return {
-            "input": inputs,
-            "label": label
+            "input_ids": inputs['input_ids'].flatten(),
+            "attention_mask": inputs['attention_mask'].flatten(),
+            "labels": label
         }
         
         
