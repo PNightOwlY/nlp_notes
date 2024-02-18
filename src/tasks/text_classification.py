@@ -10,6 +10,7 @@ from pathlib import Path
 from src.common import read_jd_sentiment_cls_data
 from src.common import TextClassificationDataSet
 from .trainer import LocalTrainer 
+from .data import EmbedCollator
 
 
 from .arguments import ModelArguments, DataArguments, LocalTrainingArguments as TrainingArguments
@@ -91,6 +92,9 @@ def main():
         args=training_args,
         train_dataset=train_dataset,
         tokenizer=tokenizer,
+        data_collator=EmbedCollator(
+            tokenizer=tokenizer,            
+        ),
         eval_dataset=eval_dataset,
         compute_metrics=compute_metrics
     )

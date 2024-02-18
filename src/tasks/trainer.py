@@ -25,7 +25,7 @@ class LocalTrainer(Trainer):
 
         Subclass and override for custom behavior.
         """
-
+        print(inputs)
         outputs = model(**inputs)
         loss = outputs.loss
 

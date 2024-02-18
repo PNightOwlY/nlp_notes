@@ -16,14 +16,8 @@ class TextClassificationDataSet(Dataset):
     def __getitem__(self, idx):
         text = self.data[idx]['text']
         label = self.data[idx]['label']
-        
-        inputs = self.tokenizer(text, padding=True, truncation=True, max_length=self.max_length, return_tensors='pt')
-        
-        return {
-            "input_ids": inputs['input_ids'].flatten(),
-            "attention_mask": inputs['attention_mask'].flatten(),
-            "labels": label
-        }
+                 
+        return text, label
         
         
         
