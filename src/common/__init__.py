@@ -1,1 +1,2 @@
-from text_classification_dataset import TextClassificationDataSet
+from .data import read_jd_sentiment_cls_data
+from .text_classification_dataset import TextClassificationDataSet
